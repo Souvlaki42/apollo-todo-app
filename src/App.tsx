@@ -1,4 +1,16 @@
+import { useState } from "react";
+
+type Todo = {
+  id: string;
+  content: string;
+  completed: boolean;
+};
+
+const generateId = (text: string) =>
+  `todo-${encodeURI(text)}-${Math.floor(Math.random() * 1000)}`;
+
 export default function App() {
+  const [todos, setTodos] = useState<Todo[]>([]);
   return (
     <main className="bg-[#111111] flex flex-col w-screen h-screen gap-10 py-42 text-amber-50 font-serif text-2xl">
       <header className="flex justify-center text-4xl font-bold">
