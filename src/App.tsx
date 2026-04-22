@@ -32,6 +32,14 @@ export default function App() {
     e.currentTarget.reset();
   };
 
+  const completeTodo = (id: string) => {
+    setTodos((prev) => {
+      return prev.map((item) => {
+        if (item.id == id) return { ...item, completed: !item.completed };
+        return item;
+      });
+    });
+  };
   return (
     <main className="bg-[#111111] flex flex-col w-screen h-screen gap-10 py-42 text-amber-50 font-serif text-2xl">
       <header className="flex justify-center text-4xl font-bold">
@@ -45,8 +53,13 @@ export default function App() {
         />
       </form>
       <ul className="flex flex-col items-center gap-2">
-        {todos.map(({ id, content }) => (
-          <li key={id}>{content}</li>
+        {todos.map(({ id, completed, content }) => (
+          <li key={id} className="flex gap-2">
+            <input type="checkbox" onChange={() => completeTodo(id)}></input>
+            <span className={`${completed ? "line-through" : ""}`}>
+              {content}
+            </span>
+          </li>
         ))}
       </ul>
     </main>
