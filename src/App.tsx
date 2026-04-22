@@ -37,15 +37,18 @@ export default function App() {
       <header className="flex justify-center text-4xl font-bold">
         <h1>Todo app for Apollo</h1>
       </header>
-      <section>
-        <form className="w-full flex justify-center">
-          <input
-            type="text"
-            name="todo-add"
-            className="outline-4 w-3/4 h-10 outline-blue-500 hover:outline-blue-400 rounded-lg p-4"
-          />
-        </form>
-      </section>
+      <form className="w-full flex justify-center" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="todo"
+          className="outline-4 w-3/4 h-10 outline-blue-500 hover:outline-blue-400 rounded-lg p-4"
+        />
+      </form>
+      <ul className="flex flex-col items-center gap-2">
+        {todos.map(({ id, content }) => (
+          <li key={id}>{content}</li>
+        ))}
+      </ul>
     </main>
   );
 }
