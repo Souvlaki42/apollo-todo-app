@@ -6,4 +6,6 @@ I used Vite + TS + React + Tailwind CSS.
 
 # License
 
+This project is licensed under the [MIT LICENSE](./LICENSE).
+
 The favicon came from [veryicon.com](https://www.veryicon.com/icons/business/vscode-program-item-icon/todo-2.html).
