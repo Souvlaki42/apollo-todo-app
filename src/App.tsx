@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type SubmitEventHandler } from "react";
 
 type Todo = {
   id: string;
@@ -11,6 +11,27 @@ const generateId = (text: string) =>
 
 export default function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.currentTarget);
+    const content = data.get("todo")?.toString();
+
+    if (!content) return;
+
+    setTodos((prev) => [
+      ...prev,
+      {
+        content,
+        completed: false,
+        id: generateId(content),
+      },
+    ]);
+
+    e.currentTarget.reset();
+  };
+
   return (
     <main className="bg-[#111111] flex flex-col w-screen h-screen gap-10 py-42 text-amber-50 font-serif text-2xl">
       <header className="flex justify-center text-4xl font-bold">
