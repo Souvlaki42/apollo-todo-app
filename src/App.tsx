@@ -54,18 +54,29 @@ export default function App() {
         <input
           type="text"
           name="todo"
-          className="outline-4 w-3/4 h-10 outline-blue-500 hover:outline-blue-400 rounded-lg p-4"
+          className="outline-4 w-3/4 h-10 outline-blue-500 focus:outline-blue-400 rounded-lg p-4"
         />
       </form>
       <ul className="flex flex-col items-center gap-2">
         {todos.map(({ id, completed, content }) => (
-          <li key={id} className="flex gap-2">
-            <input type="checkbox" onChange={() => completeTodo(id)}></input>
+          <li
+            key={id}
+            className={`flex gap-4 border-2 w-1/2 justify-between items-center ${completed ? "border-red-500 hover:border-red-400" : "border-green-500 hover:border-green-400"} rounded-xl px-4 py-2`}
+          >
+            <input
+              className="w-8 h-8 rounded-xl accent-blue-600 hover:accent-blue-500"
+              type="checkbox"
+              onChange={() => completeTodo(id)}
+            ></input>
             <span className={`${completed ? "line-through" : ""}`}>
               {content}
             </span>
-            <button type="button" onClick={() => deleteTodo(id)}>
-              x
+            <button
+              className="text-red-700 hover:text-red-600 hover:cursor-pointer"
+              type="button"
+              onClick={() => deleteTodo(id)}
+            >
+              ✕
             </button>
           </li>
         ))}
