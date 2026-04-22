@@ -40,6 +40,11 @@ export default function App() {
       });
     });
   };
+
+  const deleteTodo = (id: string) => {
+    setTodos((prev) => prev.filter((item) => item.id != id));
+  };
+
   return (
     <main className="bg-[#111111] flex flex-col w-screen h-screen gap-10 py-42 text-amber-50 font-serif text-2xl">
       <header className="flex justify-center text-4xl font-bold">
@@ -59,6 +64,9 @@ export default function App() {
             <span className={`${completed ? "line-through" : ""}`}>
               {content}
             </span>
+            <button type="button" onClick={() => deleteTodo(id)}>
+              x
+            </button>
           </li>
         ))}
       </ul>
