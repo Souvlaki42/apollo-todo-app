@@ -48,7 +48,7 @@ export default function App() {
   return (
     <main className="bg-[#111111] flex flex-col w-screen h-screen gap-10 py-42 text-amber-50 font-serif text-2xl">
       <header className="flex justify-center text-4xl font-bold">
-        <h1>Todo app for Apollo</h1>
+        <h1>Better todos</h1>
       </header>
       <form className="w-full flex justify-center" onSubmit={handleSubmit}>
         <input
